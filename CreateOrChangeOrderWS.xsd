@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS" xmlns="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:complexType name="OrderCreateOrChangeType">
+        <xsd:sequence>
+            <xsd:element name="Operation" type="OperationType" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="SAPCustomerNumber" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="OrangeCustomerNumber"
+                type="xsd:string" maxOccurs="1" minOccurs="1">
+            </xsd:element>
+            <xsd:element name="OrangeOrderNumber" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="SAPOrderNumber" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+
+            <xsd:element name="BillingAddress" type="AddressType" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="ShippingAddress" type="AddressType" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="ShippingMethod" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="OrderDate" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="GrossAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="DiscountAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="NetAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="TaxAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="ShippingAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="Campaign" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="PromoCode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="OrderLines" type="OrderLinesType"
+                maxOccurs="unbounded" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="Status" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="OperationType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Create"/>
+            <xsd:enumeration value="Change"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="AddressType">
+        <xsd:sequence>
+            <xsd:element name="StreetAddress" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="City" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="State" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OrderLinesType">
+        <xsd:sequence>
+            <xsd:element name="LineNumber" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="ItemID" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="QuantityOrdered" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="RequestedDate" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="RequestedQuantity" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="Status" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="StartDate" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="EndDate" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="Duration" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="Cycle" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="GrossAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="DiscountAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="NetAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="TaxAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="ShippingAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="PaidAmount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="Campaign" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="PromoCode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="Deferment" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="DefermentPeriod" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:simpleType name="StatusType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Success"/>
+            <xsd:enumeration value="Failure"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="OrderCreateOrChangeResponseType">
+        <xsd:sequence>
+            <xsd:element name="Status" type="StatusType" minOccurs="1" />
+            <xsd:element name="SAPCustomerNumber" type="xsd:string"
+                minOccurs="0" />
+            <xsd:element name="ErrorMessage" type="xsd:string"
+                minOccurs="0" />
+            <xsd:element name="OrderLinesStatus" type="OrderLinesStatusType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OrderLinesStatusType">
+        <xsd:sequence>
+            <xsd:element name="Status" type="StatusType" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="LineNumber" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="ErrorMessage" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="Order" type="OrderCreateOrChangeType"></xsd:element>
+
+    <xsd:element name="Response"
+        type="OrderCreateOrChangeResponseType">
+    </xsd:element>
+</xsd:schema>

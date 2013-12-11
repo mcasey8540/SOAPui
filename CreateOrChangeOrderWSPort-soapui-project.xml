@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="CreateOrChangeOrderWSPort" resourceRoot="" soapui-version="4.6.2" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="SoapBinding" type="wsdl" bindingName="{http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS}SoapBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/ttsenkov/Documents/createChangeOrderwS/CreateOrChangeOrderWSPort.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\ttsenkov\Documents\createChangeOrderwS\CreateOrChangeOrderWSPort.wsdl"><con:part><con:url>file:\C:\Users\ttsenkov\Documents\createChangeOrderwS\CreateOrChangeOrderWSPort.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS" xmlns:ns2="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS" schemaLocation="CreateOrChangeOrderWS.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateOrChangeOrderWSOut">
+    <wsdl:part element="ns2:Response" name="Response"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrChangeOrderWSIn">
+    <wsdl:part element="ns2:Order" name="Order"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CreateOrChangeOrderWSPortType">
+    <wsdl:operation name="CreateOrChangeOrderWS">
+      <wsdl:documentation>
+        <pddoc:processDesignerOperationDoc type="Invoke" xmlns:pddoc="http://uri.seeburger.com/bisas/processDesigner/doc"/>
+      </wsdl:documentation>
+      <wsdl:input message="ns1:CreateOrChangeOrderWSIn"></wsdl:input>
+      <wsdl:output message="ns1:CreateOrChangeOrderWSOut"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SoapBinding" type="ns1:CreateOrChangeOrderWSPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference URI="#Policy-1" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+    <wsdl:operation name="CreateOrChangeOrderWS">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CreateOrChangeOrderWSService">
+    <wsdl:port binding="ns1:SoapBinding" name="CreateOrChangeOrderWSPort">
+      <soap:address location="http://nftw6mapd013.blue.ns:10000/ws/CreateOrChangeOrderWSPort?ls=000"/>
+    </wsdl:port>
+  </wsdl:service>
+  <plnk:partnerLinkType name="CreateOrChangeOrderWS" wsdl:required="true">
+    <!--:P-->
+    <plnk:role name="role_CreateOrChangeOrderWS" wsdl:required="false">
+      <plnk:portType name="ns1:CreateOrChangeOrderWSPortType"/>
+    </plnk:role>
+    <plnk:role name="role_CreateOrChangeOrderWSLink" wsdl:required="false">
+      <plnk:portType name="ns1:CreateOrChangeOrderWSPortType"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <wsp:Policy wsu:Id="Policy-1" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:MTOM wsp:Optional="true" xmlns:wsoma="http://www.w3.org/2007/08/soap12-mtom-policy"/>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\ttsenkov\Documents\createChangeOrderwS\CreateOrChangeOrderWS.xsd</con:url><con:content><![CDATA[<xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS">
+  <xsd:complexType name="OrderCreateOrChangeType">
+    <xsd:sequence>
+      <xsd:element name="Operation" type="OperationType"/>
+      <xsd:element minOccurs="0" name="SAPCustomerNumber" type="xsd:string"/>
+      <xsd:element name="OrangeCustomerNumber" type="xsd:string"/>
+      <xsd:element name="OrangeOrderNumber" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="SAPOrderNumber" type="xsd:string"/>
+      <xsd:element name="BillingAddress" type="AddressType"/>
+      <xsd:element name="ShippingAddress" type="AddressType"/>
+      <xsd:element minOccurs="0" name="ShippingMethod" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="OrderDate" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="GrossAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="DiscountAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="NetAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="TaxAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ShippingAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Campaign" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PromoCode" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="OrderLines" type="OrderLinesType"/>
+      <xsd:element minOccurs="0" name="Status" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="OperationType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Create"/>
+      <xsd:enumeration value="Change"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="AddressType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="StreetAddress" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="City" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="State" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PostalCode" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Country" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderLinesType">
+    <xsd:sequence>
+      <xsd:element name="LineNumber" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ItemID" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QuantityOrdered" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Status" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="StartDate" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Duration" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Cycle" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="GrossAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="DiscountAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="NetAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="TaxAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ShippingAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PaidAmount" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Campaign" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PromoCode" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Deferment" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="DefermentPeriod" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="StatusType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Success"/>
+      <xsd:enumeration value="Failure"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="OrderCreateOrChangeResponseType">
+    <xsd:sequence>
+      <xsd:element name="Status" type="StatusType"/>
+      <xsd:element minOccurs="0" name="SAPCustomerNumber" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ErrorMessage" type="xsd:string"/>
+      <xsd:element name="OrderLinesStatus" type="OrderLinesStatusType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderLinesStatusType">
+    <xsd:sequence>
+      <xsd:element name="Status" type="StatusType"/>
+      <xsd:element name="LineNumber" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ErrorMessage" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Order" type="OrderCreateOrChangeType"/>
+  <xsd:element name="Response" type="OrderCreateOrChangeResponseType"/>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://nftw6mapd013.blue.ns:10000/ws/CreateOrChangeOrderWSPort?ls=000</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="CreateOrChangeOrderWS" bindingOperationName="CreateOrChangeOrderWS" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://65.202.219.27:8443/ws/CreateOrChangeOrderWSPort?ls=000</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <Order xmlns="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS">
+         <Operation>Create</Operation>
+         <SAPCustomerNumber>080000017</SAPCustomerNumber>
+         <OrangeCustomerNumber>10</OrangeCustomerNumber>
+         <OrangeOrderNumber>636</OrangeOrderNumber>
+         <SAPOrderNumber></SAPOrderNumber>
+         <BillingAddress>
+            <StreetAddress></StreetAddress>
+            <City></City>
+            <State></State>
+            <PostalCode></PostalCode>
+            <Country></Country>
+         </BillingAddress>
+         <ShippingAddress>
+            <StreetAddress>?</StreetAddress>
+            <City>?</City>
+            <State>?</State>
+            <PostalCode>?</PostalCode>
+            <Country>?</Country>
+         </ShippingAddress>
+         <ShippingMethod>?</ShippingMethod>
+         <OrderDate>20130916</OrderDate>
+         <GrossAmount>10</GrossAmount>
+         <DiscountAmount></DiscountAmount>
+         <NetAmount>8</NetAmount>
+         <TaxAmount>2</TaxAmount>
+         <ShippingAmount></ShippingAmount>
+         <Campaign></Campaign>
+         <PromoCode>?</PromoCode>
+         <!--Zero or more repetitions:-->
+         <OrderLines>
+            <LineNumber>10</LineNumber>
+            <ItemID>11</ItemID>
+            <QuantityOrdered>11</QuantityOrdered>
+            <RequestedQuantity>11</RequestedQuantity>
+            <Status>?</Status>
+            <StartDate>?</StartDate>
+            <Duration>?< /Duration>
+            <Cycle>?</Cycle>
+            <GrossAmount>11</GrossAmount>
+            <DiscountAmount></DiscountAmount>
+            <NetAmount>10</NetAmount>
+            <TaxAmount>1</TaxAmount>
+            <ShippingAmount>?</ShippingAmount>
+            <PaidAmount>?</PaidAmount>
+            <Campaign>?</Campaign>
+            <PromoCode>?</PromoCode>
+            <Deferment>?</Deferment>
+            <DefermentPeriod>?</DefermentPeriod>
+         </OrderLines>
+         <Status>?</Status>
+      </Order>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS/CreateOrChangeOrderWSPortType/CreateOrChangeOrderWSRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:sensitiveInformation/></con:soapui-project>

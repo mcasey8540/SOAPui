@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS" xmlns:ns0="http://uri.seeburger.com/bisas/message/schema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS">
+<xsd:element name="Customer" type="CustomerCreateOrChangeType"/>
+<xsd:complexType name="CustomerCreateOrChangeResponseType">
+<xsd:sequence>
+<xsd:element name="Status" type="StatusType"/>
+<xsd:element minOccurs="0" name="SAPCustomerNumber" type="xsd:string"/>
+<xsd:element minOccurs="0" name="ErrorMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="BillingAddressType">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="StreetAddress" type="xsd:string"/>
+<xsd:element minOccurs="0" name="City" type="xsd:string"/>
+<xsd:element minOccurs="0" name="State" type="xsd:string"/>
+<xsd:element minOccurs="0" name="PostalCode" type="xsd:string"/>
+<xsd:element minOccurs="0" name="Country" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="CustomerCreateOrChangeTypeType">
+<xsd:sequence/>
+</xsd:complexType>
+<xsd:complexType name="RequestType">
+<xsd:sequence>
+<xsd:element name="Customer" type="CustomerCreateOrChangeTypeType"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="CustomerCreateOrChangeType">
+<xsd:sequence>
+<xsd:element name="Operation" type="OperationType"/>
+<xsd:element minOccurs="0" name="SAPCustomerId" type="xsd:string"/>
+<xsd:element minOccurs="0" name="FirstName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="LastName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="DateOfBirth" type="xsd:string"/>
+<xsd:element minOccurs="0" name="BillingAddress" type="BillingAddressType"/>
+<xsd:element minOccurs="0" name="TelephoneNumber" type="xsd:string"/>
+<xsd:element minOccurs="0" name="EmailAddress" type="xsd:string"/>
+<xsd:element minOccurs="0" name="Language" type="xsd:string"/>
+<xsd:element minOccurs="0" name="Currency" type="xsd:string"/>
+<xsd:element minOccurs="0" name="SalesOrganisation" type="xsd:string"/>
+<xsd:element minOccurs="0" name="DistributionChannel" type="xsd:string"/>
+<xsd:element minOccurs="0" name="Division" type="xsd:string"/>
+<xsd:element minOccurs="0" name="user_id" type="xsd:int"/>
+<xsd:element minOccurs="0" name="nickname" type="xsd:string"/>
+<xsd:element minOccurs="0" name="gender" type="xsd:string"/>
+<xsd:element minOccurs="0" name="apt" type="xsd:string"/>
+<xsd:element minOccurs="0" name="starting_lbs" type="xsd:int"/>
+<xsd:element minOccurs="0" name="current_lbs" type="xsd:int"/>
+<xsd:element minOccurs="0" name="lbs_to_lose" type="xsd:int"/>
+<xsd:element minOccurs="0" name="height" type="xsd:int"/>
+<xsd:element minOccurs="0" name="breastfeeding" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="no_dietary_preferences" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="no_call" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="allgergen_statement_accepted" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="call_hours" type="xsd:string"/>
+<xsd:element minOccurs="0" name="latitude" type="xsd:float"/>
+<xsd:element minOccurs="0" name="longtitude" type="xsd:float"/>
+<xsd:element minOccurs="0" name="status" type="xsd:string"/>
+<xsd:element minOccurs="0" name="plan" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:simpleType name="StatusType">
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="Success"/>
+<xsd:enumeration value="Failure"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="OperationType">
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="Create"/>
+<xsd:enumeration value="Change"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:element name="Response" type="CustomerCreateOrChangeResponseType"/>
+</xsd:schema>

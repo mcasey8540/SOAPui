@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="CreateOrChangeCustomerWSPort" resourceRoot="" soapui-version="4.6.2" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="SoapBinding" type="wsdl" bindingName="{http://uri.seeburger.com/bisas/interfaces/CreateOrChangeCustomerWS}SoapBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/ttsenkov/Desktop/createChangeWS/CreateOrChangeCustomerWSPort.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\ttsenkov\Desktop\createChangeWS\CreateOrChangeCustomerWSPort.wsdl"><con:part><con:url>file:\C:\Users\ttsenkov\Desktop\createChangeWS\CreateOrChangeCustomerWSPort.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeCustomerWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeCustomerWS" xmlns:ns2="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:sap="urn:sap-com:document:sap:rfc:functions" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeCustomerWS">
+      <xsd:import namespace="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS" schemaLocation="CreateOrChangeCustomerWS.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateOrChangeCustomerWSIn">
+    <wsdl:part element="ns2:Customer" name="Customer"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrChangeCustomerWSOut">
+    <wsdl:part name="Response" type="ns2:CustomerCreateOrChangeResponseType"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CreateOrChangeCustomerWSPortType">
+    <wsdl:operation name="CreateOrChangeCustomerWS">
+      <wsdl:documentation>
+        <pddoc:processDesignerOperationDoc type="Invoke" xmlns:pddoc="http://uri.seeburger.com/bisas/processDesigner/doc"/>
+      </wsdl:documentation>
+      <wsdl:input message="ns1:CreateOrChangeCustomerWSIn"></wsdl:input>
+      <wsdl:output message="ns1:CreateOrChangeCustomerWSOut"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SoapBinding" type="ns1:CreateOrChangeCustomerWSPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference URI="#Policy-1" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+    <wsdl:operation name="CreateOrChangeCustomerWS">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CreateOrChangeCustomerWSService">
+    <wsdl:port binding="ns1:SoapBinding" name="CreateOrChangeCustomerWSPort">
+      <soap:address location="http://nftw6mapd013.blue.ns:10000/ws/CreateOrChangeCustomerWSPort?ls=000"/>
+    </wsdl:port>
+  </wsdl:service>
+  <plnk:partnerLinkType name="CreateOrChangeCustomerWS" wsdl:required="true">
+    <!--:P-->
+    <plnk:role name="role_CreateOrChangeCustomerWSLink" wsdl:required="false">
+      <plnk:portType name="ns1:CreateOrChangeCustomerWSPortType"/>
+    </plnk:role>
+    <plnk:role name="role_CreateOrChangeCustomerWS" wsdl:required="false">
+      <plnk:portType name="ns1:CreateOrChangeCustomerWSPortType"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <wsp:Policy wsu:Id="Policy-1" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:MTOM wsp:Optional="true" xmlns:wsoma="http://www.w3.org/2007/08/soap12-mtom-policy"/>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\ttsenkov\Desktop\createChangeWS\CreateOrChangeCustomerWS.xsd</con:url><con:content><![CDATA[<xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS" xmlns:ns0="http://uri.seeburger.com/bisas/message/schema">
+  <xsd:element name="Customer" type="CustomerCreateOrChangeType"/>
+  <xsd:complexType name="CustomerCreateOrChangeResponseType">
+    <xsd:sequence>
+      <xsd:element name="Status" type="StatusType"/>
+      <xsd:element minOccurs="0" name="SAPCustomerNumber" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ErrorMessage" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BillingAddressType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="StreetAddress" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="City" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="State" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PostalCode" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Country" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerCreateOrChangeTypeType">
+    <xsd:sequence/>
+  </xsd:complexType>
+  <xsd:complexType name="RequestType">
+    <xsd:sequence>
+      <xsd:element name="Customer" type="CustomerCreateOrChangeTypeType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerCreateOrChangeType">
+    <xsd:sequence>
+      <xsd:element name="Operation" type="OperationType"/>
+      <xsd:element minOccurs="0" name="SAPCustomerId" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="FirstName" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="LastName" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="DateOfBirth" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="BillingAddress" type="BillingAddressType"/>
+      <xsd:element minOccurs="0" name="TelephoneNumber" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="EmailAddress" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Language" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Currency" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="SalesOrganisation" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="DistributionChannel" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Division" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="user_id" type="xsd:int"/>
+      <xsd:element minOccurs="0" name="nickname" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="gender" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="apt" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="starting_lbs" type="xsd:int"/>
+      <xsd:element minOccurs="0" name="current_lbs" type="xsd:int"/>
+      <xsd:element minOccurs="0" name="lbs_to_lose" type="xsd:int"/>
+      <xsd:element minOccurs="0" name="height" type="xsd:int"/>
+      <xsd:element minOccurs="0" name="breastfeeding" type="xsd:boolean"/>
+      <xsd:element minOccurs="0" name="no_dietary_preferences" type="xsd:boolean"/>
+      <xsd:element minOccurs="0" name="no_call" type="xsd:boolean"/>
+      <xsd:element minOccurs="0" name="allgergen_statement_accepted" type="xsd:boolean"/>
+      <xsd:element minOccurs="0" name="call_hours" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="latitude" type="xsd:float"/>
+      <xsd:element minOccurs="0" name="longtitude" type="xsd:float"/>
+      <xsd:element minOccurs="0" name="status" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="plan" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="StatusType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Success"/>
+      <xsd:enumeration value="Failure"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="OperationType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Create"/>
+      <xsd:enumeration value="Change"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="Response" type="CustomerCreateOrChangeResponseType"/>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://NFTW6MAPZ004:8444/ws/CreateOrChangeCustomerWSPort?ls=000</con:endpoint><con:endpoint>https://nftw6mapd013.blue.ns:8443/ws/CreateOrChangeCustomerWSPort?ls=000</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="CreateOrChangeCustomerWS" bindingOperationName="CreateOrChangeCustomerWS" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://65.202.219.27:8443/ws/CreateOrChangeCustomerWSPort?ls=000</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <Customer xmlns="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS">
+         <Operation>Create</Operation>
+         <SAPCustomerId></SAPCustomerId>
+         <FirstName>Joe</FirstName>
+         <LastName>McPherson2</LastName>
+         <DateOfBirth></DateOfBirth>
+         <BillingAddress>
+            <StreetAddress>Some Address</StreetAddress>
+            <City>Atlanta</City>
+            <State>GA</State>
+            <PostalCode>30308</PostalCode>
+            <Country>US</Country>
+         </BillingAddress>
+         <TelephoneNumber>123</TelephoneNumber>
+         <EmailAddress>a@a.com</EmailAddress>
+         <Language>US</Language>
+         <Currency>USD</Currency>
+         <SalesOrganisation>1000</SalesOrganisation>
+         <DistributionChannel>10</DistributionChannel>
+         <Division>10</Division>
+         <user_id>cvetko_cenkov</user_id>
+         <nickname>cvetko</nickname>
+         <gender>M</gender>
+         <apt>123</apt>
+         <starting_lbs>?</starting_lbs>
+         <current_lbs>?</current_lbs>
+         <lbs_to_lose>?</lbs_to_lose>
+         <height>?</height>
+         <breastfeeding>?</breastfeeding>
+         <no_dietary_preferences>?</no_dietary_preferences>
+         <no_call>?</no_call>
+         <allgergen_statement_accepted>?</allgergen_statement_accepted>
+         <call_hours>?</call_hours>
+         <latitude>?</latitude>
+         <longtitude>?</longtitude>
+         <status>?</status>
+         <plan>?</plan>
+      </Customer>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeCustomerWS/CreateOrChangeCustomerWSPortType/CreateOrChangeCustomerWSRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Update"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://nftw6mapd013.blue.ns:8443/ws/CreateOrChangeCustomerWSPort?ls=000</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <Customer xmlns="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS">
+         <Operation>Update</Operation>
+         <SAPCustomerId>0800000092</SAPCustomerId>
+         <FirstName>Tsvetko11</FirstName>
+         <LastName>Tsenkov</LastName>
+         <DateOfBirth></DateOfBirth>
+         <BillingAddress>
+            <StreetAddress>Some Address</StreetAddress>
+            <City>Atlanta</City>
+            <State>GA</State>
+            <PostalCode>30308</PostalCode>
+            <Country>US</Country>
+         </BillingAddress>
+         <TelephoneNumber>123</TelephoneNumber>
+         <EmailAddress>a@a.com</EmailAddress>
+         <Language>US</Language>
+         <Currency>USD</Currency>
+         <SalesOrganisation>1000</SalesOrganisation>
+         <DistributionChannel>10</DistributionChannel>
+         <Division>10</Division>
+         <user_id>cvetko_cenkov</user_id>
+         <nickname>cvetko</nickname>
+         <gender>M</gender>
+         <apt>123</apt>
+         <starting_lbs>?</starting_lbs>
+         <current_lbs>?</current_lbs>
+         <lbs_to_lose>?</lbs_to_lose>
+         <height>?</height>
+         <breastfeeding>?</breastfeeding>
+         <no_dietary_preferences>?</no_dietary_preferences>
+         <no_call>?</no_call>
+         <allgergen_statement_accepted>?</allgergen_statement_accepted>
+         <call_hours>?</call_hours>
+         <latitude>?</latitude>
+         <longtitude>?</longtitude>
+         <status>?</status>
+         <plan>?</plan>
+      </Customer>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeCustomerWS/CreateOrChangeCustomerWSPortType/CreateOrChangeCustomerWSRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:sensitiveInformation/></con:soapui-project>

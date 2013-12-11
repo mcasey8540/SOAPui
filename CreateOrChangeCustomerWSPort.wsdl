@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeCustomerWS" xmlns:ns2="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:sap="urn:sap-com:document:sap:rfc:functions" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeCustomerWS">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeCustomerWS" xmlns:ns1="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeCustomerWS" xmlns:ns2="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:sap="urn:sap-com:document:sap:rfc:functions" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+            <xsd:import namespace="http://uri.seeburger.com/bisas/schema/CreateOrChangeCustomerWS" schemaLocation="CreateOrChangeCustomerWS.xsd"/>
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateOrChangeCustomerWSIn">
+    <wsdl:part element="ns2:Customer" name="Customer">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrChangeCustomerWSOut">
+    <wsdl:part name="Response" type="ns2:CustomerCreateOrChangeResponseType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CreateOrChangeCustomerWSPortType">
+    <wsdl:operation name="CreateOrChangeCustomerWS">
+<wsdl:documentation>
+                <pddoc:processDesignerOperationDoc xmlns:pddoc="http://uri.seeburger.com/bisas/processDesigner/doc" type="Invoke"/>
+            </wsdl:documentation>
+      <wsdl:input message="ns1:CreateOrChangeCustomerWSIn">
+    </wsdl:input>
+      <wsdl:output message="ns1:CreateOrChangeCustomerWSOut">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SoapBinding" type="ns1:CreateOrChangeCustomerWSPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#Policy-1"/>
+    <wsdl:operation name="CreateOrChangeCustomerWS">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CreateOrChangeCustomerWSService">
+    <wsdl:port binding="ns1:SoapBinding" name="CreateOrChangeCustomerWSPort">
+      <soap:address location="https://65.202.219.27:8443/ws/CreateOrChangeCustomerWSPort?ls=000"/>
+    </wsdl:port>
+  </wsdl:service>
+    <plnk:partnerLinkType name="CreateOrChangeCustomerWS" wsdl:required="true"><!--:P-->
+      <plnk:role name="role_CreateOrChangeCustomerWSLink" wsdl:required="false">      <plnk:portType name="ns1:CreateOrChangeCustomerWSPortType"/>
+    </plnk:role>
+      <plnk:role name="role_CreateOrChangeCustomerWS" wsdl:required="false">      <plnk:portType name="ns1:CreateOrChangeCustomerWSPortType"/>
+    </plnk:role>
+</plnk:partnerLinkType>
+    <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="Policy-1"><wsp:ExactlyOne><wsp:All><wsoma:MTOM xmlns:wsoma="http://www.w3.org/2007/08/soap12-mtom-policy" wsp:Optional="true"/></wsp:All></wsp:ExactlyOne></wsp:Policy>
+</wsdl:definitions>
