@@ -6,13 +6,13 @@ require 'savon'
 	 
 		client = Savon.client(
 			#wsdl file path is relative
-		  wsdl: "/Users/mcasey/Desktop/SOAPUI/CreateOrChangeOrderWS-NEW.wsdl",
+		  wsdl: "/Users/mcasey/Desktop/SOAPUI/CreateOrChangeOrderWS.wsdl",
 			ssl_verify_mode: :none,
 			pretty_print_xml: true
 		)
 
 		response = client.call(:create_or_change_order_ws, xml: "
-			<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/'' xmlns:cre='http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS'>
+			<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' xmlns:cre='http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS'>
 			   <soapenv:Header/>
 			   <soapenv:Body>
 			      <Order xmlns='http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS'>
@@ -67,10 +67,7 @@ require 'savon'
 			         <Status>?</Status>
 			      </Order>
 			   </soapenv:Body>
-			</soapenv:Envelope>"
-		)
-
-		return response
+			</soapenv:Envelope>")
 
 	end
 

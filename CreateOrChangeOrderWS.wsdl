@@ -1,27 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS" xmlns:ns2="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS" xmlns:ns1="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions targetNamespace="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS" xmlns:ns2="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:types>
-    <xsd:schema targetNamespace="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS" xmlns:ns1="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS" xmlns:ns2="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:import namespace="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS" schemaLocation="CreateOrChangeOrderWS.xsd"/></xsd:schema>
+    <xsd:schema targetNamespace="http://uri.seeburger.com/bisas/interfaces/CreateOrChangeOrderWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://uri.seeburger.com/bisas/schema/CreateOrChangeOrderWS" schemaLocation="CreateOrChangeOrderWS.xsd"/>
+    </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="CreateOrChangeOrderWSIn">
-    <wsdl:part name="Order" element="ns2:Order">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="CreateOrChangeOrderWSOut">
-    <wsdl:part name="Response" element="ns2:Response">
-    </wsdl:part>
+    <wsdl:part element="ns2:Response" name="Response"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrChangeOrderWSIn">
+    <wsdl:part element="ns2:Order" name="Order"></wsdl:part>
   </wsdl:message>
   <wsdl:portType name="CreateOrChangeOrderWSPortType">
     <wsdl:operation name="CreateOrChangeOrderWS">
-<wsdl:documentation><pddoc:processDesignerOperationDoc type="Invoke" xmlns:pddoc="http://uri.seeburger.com/bisas/processDesigner/doc"/></wsdl:documentation>
-      <wsdl:input message="ns1:CreateOrChangeOrderWSIn">
-    </wsdl:input>
-      <wsdl:output message="ns1:CreateOrChangeOrderWSOut">
-    </wsdl:output>
+      <wsdl:documentation>
+        <pddoc:processDesignerOperationDoc type="Invoke" xmlns:pddoc="http://uri.seeburger.com/bisas/processDesigner/doc"/>
+      </wsdl:documentation>
+      <wsdl:input message="ns1:CreateOrChangeOrderWSIn"></wsdl:input>
+      <wsdl:output message="ns1:CreateOrChangeOrderWSOut"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SoapBinding" type="ns1:CreateOrChangeOrderWSPortType">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference URI="#Policy-1" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
     <wsdl:operation name="CreateOrChangeOrderWS">
       <soap:operation soapAction=""/>
       <wsdl:input>
@@ -33,14 +33,24 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CreateOrChangeOrderWSService">
-    <wsdl:port name="CreateOrChangeOrderWSPort" binding="ns1:SoapBinding">
-      <soap:address location="https://65.202.219.27:8443/ws/CreateOrChangeOrderWSPort?ls=000"/>
+    <wsdl:port binding="ns1:SoapBinding" name="CreateOrChangeOrderWSPort">
+      <soap:address location="https://65.202.219.27:8443/ws/CreateOrChangeOrderWSPort"/>
     </wsdl:port>
   </wsdl:service>
-      <plnk:partnerLinkType name="CreateOrChangeOrderWS" wsdl:required="true"><!--:P-->
-      <plnk:role name="role_CreateOrChangeOrderWS" wsdl:required="false"      >      <plnk:portType name="ns1:CreateOrChangeOrderWSPortType"		/>
-		</plnk:role>
-      <plnk:role name="role_CreateOrChangeOrderWSLink" wsdl:required="false"      >      <plnk:portType name="ns1:CreateOrChangeOrderWSPortType"		/>
-		</plnk:role>
-</plnk:partnerLinkType>
+  <plnk:partnerLinkType name="CreateOrChangeOrderWS" wsdl:required="true">
+    <!--:P-->
+    <plnk:role name="role_CreateOrChangeOrderWS" wsdl:required="false">
+      <plnk:portType name="ns1:CreateOrChangeOrderWSPortType"/>
+    </plnk:role>
+    <plnk:role name="role_CreateOrChangeOrderWSLink" wsdl:required="false">
+      <plnk:portType name="ns1:CreateOrChangeOrderWSPortType"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <wsp:Policy wsu:Id="Policy-1" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:MTOM wsp:Optional="true" xmlns:wsoma="http://www.w3.org/2007/08/soap12-mtom-policy"/>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
 </wsdl:definitions>
